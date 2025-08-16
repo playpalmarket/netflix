@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Ketentuan & Bantuan Garansi</title>
+
+  <!-- Tipografi premium: SF Pro pada perangkat Apple; Inter sebagai webfont fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       Design Tokens (minimal)
+       ========================= */
+    :root{
+      --bg: #f5f5f7;          /* kanvas netral */
+      --surface: #ffffff;     /* kartu/kertas */
+      --text: #1d1d1f;        /* teks utama */
+      --muted: #6e6e73;       /* teks sekunder */
+      --border: rgba(0,0,0,.08);
+      --accent: #0a84ff;      /* aksen halus */
+      --warn: #b00020;        /* penekanan denda */
+      --radius: 16px;
+      --shadow: 0 1px 1px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.08);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #000000;
+        --surface: #0b0b0f;
+        --text: #f5f5f7;
+        --muted: #a1a1a6;
+        --border: rgba(255,255,255,.10);
+        --warn: #ff6b6b;
+        --shadow: 0 1px 1px rgba(0,0,0,.40), 0 8px 24px rgba(0,0,0,.60);
+      }
+    }
+
+    /* =========================
+       Dasar tipografi & layout
+       ========================= */
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+                   Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .wrap{
+      padding: clamp(24px, 4vw, 48px);
+      display: flex;
+      justify-content: center;
+    }
+    .sheet{
+      width: 100%;
+      max-width: 780px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 4vw, 40px);
+    }
+    .prose{ max-width: 68ch; }
+
+    /* =========================
+       Heading & elemen visual
+       ========================= */
+    .eyebrow{
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 8px;
+      font-weight: 600;
+    }
+    h2{
+      margin: 0 0 6px 0;
+      font-weight: 700;
+      font-size: clamp(22px, 3.2vw, 30px);
+      letter-spacing: -0.015em;
+    }
+    .rule{
+      height: 2px; width: 64px;
+      background: linear-gradient(90deg, var(--accent), rgba(10,132,255,0));
+      border-radius: 2px;
+      margin: 10px 0 18px 0;
+    }
+    h3{
+      margin: 24px 0 8px 0;
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    p{ margin: 0 0 12px 0; }
+    .muted{ color: var(--muted); }
+
+    /* =========================
+       Daftar bernomor premium
+       ========================= */
+    ol.numbered{
+      margin: 0; padding: 0;
+      list-style: none; counter-reset: item;
+    }
+    .numbered > li{
+      counter-increment: item;
+      display: grid;
+      grid-template-columns: 2.2ch 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+    }
+    .numbered > li:first-child{ border-top: none; }
+    .numbered > li::before{
+      content: counter(item) ".";
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      line-height: 1.3;
+      opacity: .9;
+    }
+    .numbered strong{ font-weight: 600; }
+
+    /* =========================
+       Bullet list bersih
+       ========================= */
+    ul.clean{ margin: 0; padding-left: 1.1em; }
+    ul.clean li{ margin: 6px 0; }
+
+    /* =========================
+       Komponen utilitas
+       ========================= */
+    .callout{
+      margin: 10px 0 0;
+      padding: 12px 14px;
+      background: rgba(10,132,255,.08);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .warn{ color: var(--warn); font-weight: 700; }
+    .meta{
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 6px 16px;
+      margin: 8px 0 0;
+    }
+    .meta dt{ color: var(--muted); }
+    .meta dd{ margin: 0; }
+    .divider{ height: 1px; background: var(--border); margin: 18px 0; }
+    ::selection{ background: rgba(10,132,255,.20); }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="sheet prose" aria-labelledby="garansi-heading">
+      <p class="eyebrow">Informasi Layanan</p>
+      <h2 id="garansi-heading">Ketentuan & Bantuan Garansi</h2>
+      <div class="rule" aria-hidden="true"></div>
+
+      <!-- MASA LANGGANAN -->
+      <h3>Masa Langganan</h3>
+      <p><strong>1 bulan = 25–30 hari</strong> (tergantung paket). Periode ini tetap dihitung sebagai “1 bulan” untuk garansi dan masa berlaku.</p>
+
+      <!-- KETENTUAN GARANSI INTI -->
+      <h3>Ketentuan Garansi</h3>
+      <ol class="numbered">
+        <li><div>Dilarang mengubah informasi akun apa pun (email, password, dsb). <span class="muted">Pelanggaran: denda Rp150.000.</span></div></li>
+        <li><div>Login hanya melalui aplikasi/website resmi.</div></li>
+        <li><div>Akun hanya untuk <strong>1 perangkat</strong> pada saat yang sama.</div></li>
+        <li><div>Dilarang login di perangkat lain tanpa logout dari perangkat sebelumnya.</div></li>
+        <li><div>Jika pindah perangkat, <strong>logout dulu</strong> di perangkat lama.</div></li>
+        <li><div>Masa garansi mengikuti durasi paket yang ditentukan.</div></li>
+        <li><div>Pelanggaran ketentuan: <strong>garansi hangus</strong> dan <strong>denda</strong> sesuai aturan.</div></li>
+      </ol>
+
+      <!-- BANTUAN: SALAH PIN PROFIL NETFLIX -->
+      <h3>Netflix — Mengatasi PIN Profil Salah</h3>
+      <ol class="numbered">
+        <li><div>Pilih <strong>Lupa PIN / Forgot PIN</strong> di layar PIN profil.</div></li>
+        <li><div>Masukkan <strong>password akun Netflix</strong>.</div></li>
+        <li><div>PIN profil yang benar akan ditampilkan.</div></li>
+        <li><div>Kembali, lalu masukkan PIN yang sudah dicek.</div></li>
+      </ol>
+      <div class="callout">
+        <p class="muted"><strong>Jika “Lupa PIN” tidak muncul:</strong> pastikan aplikasi Netflix versi terbaru, coba via browser di netflix.com, atau hubungi admin untuk bantuan reset PIN.</p>
+      </div>
+
+      <!-- SNK/ATURAN -->
+      <h3>SNK Netflix</h3>
+      <ul class="clean">
+        <li><strong>Wajib</strong> clear data / reinstall app sebelum login (hindari error/incorrect session).</li>
+        <li><strong>Max login 1 perangkat.</strong> Jika ingin pindah device, <strong>wajib kabari admin</strong> dahulu.</li>
+        <li><strong>Dilarang</strong> mengubah profil & PIN, billing/payment, email, dan password.</li>
+        <li><strong>Wajib</strong> simpan <strong>SS bukti login</strong>; tanpa bukti, garansi tidak berlaku.</li>
+      </ul>
+
+      <!-- PENEGAKAN/DENDA -->
+      <h3>Penegakan & Denda</h3>
+      <ul class="clean">
+        <li>Login lebih dari 1 device → <span class="warn">Denda Rp200.000</span>.</li>
+        <li>Pelanggaran aturan (ganti kredensial/otak-atik akun) → <span class="warn">Denda Rp500.000 + Garansi hangus + Akun ditarik</span>.</li>
+        <li>Akun dipantau; pola login tidak sesuai form dapat berakibat akun ditarik dan garansi hangus.</li>
+      </ul>
+
+      <!-- METADATA MASA BERLAKU -->
+      <div class="divider" aria-hidden="true"></div>
+      <h3>Masa Berlaku</h3>
+      <dl class="meta">
+        <dt>Durasi</dt><dd>1 bulan (25–30 hari)</dd>
+        <dt>Berakhir</dt><dd>30 Agustus 2025</dd>
+        <dt>Jam aktif</dt><dd>Sesuai waktu saat akun diberikan</dd>
+      </dl>
+    </section>
+  </main>
+</body>
+</html>
