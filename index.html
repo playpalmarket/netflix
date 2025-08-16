@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light dark" />
   <title>Ketentuan & Bantuan Garansi</title>
 
-  <!-- Tipografi premium: SF Pro pada perangkat Apple; Inter sebagai webfont fallback -->
+  <!-- Tipografi premium: SF Pro (device Apple) → Inter (webfont) → sistem -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,15 +16,16 @@
        Design Tokens (minimal)
        ========================= */
     :root{
-      --bg: #f5f5f7;          /* kanvas netral */
-      --surface: #ffffff;     /* kartu/kertas */
-      --text: #1d1d1f;        /* teks utama */
-      --muted: #6e6e73;       /* teks sekunder */
+      --bg: #f5f5f7;           /* kanvas netral */
+      --surface: #ffffff;      /* kartu/kertas */
+      --text: #1d1d1f;         /* teks utama */
+      --muted: #6e6e73;        /* teks sekunder */
       --border: rgba(0,0,0,.08);
-      --accent: #0a84ff;      /* aksen halus */
-      --warn: #b00020;        /* penekanan denda */
+      --accent: #0a84ff;       /* aksen halus elegan */
+      --warn: #b00020;         /* penekanan denda/peringatan */
       --radius: 16px;
       --shadow: 0 1px 1px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.08);
+      --tint: rgba(10,132,255,.08); /* latar tipis untuk callout */
     }
     @media (prefers-color-scheme: dark){
       :root{
@@ -35,6 +36,7 @@
         --border: rgba(255,255,255,.10);
         --warn: #ff6b6b;
         --shadow: 0 1px 1px rgba(0,0,0,.40), 0 8px 24px rgba(0,0,0,.60);
+        --tint: rgba(10,132,255,.18);
       }
     }
 
@@ -60,14 +62,14 @@
     }
     .sheet{
       width: 100%;
-      max-width: 780px;
+      max-width: 860px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: clamp(24px, 4vw, 40px);
     }
-    .prose{ max-width: 68ch; }
+    .prose{ max-width: 72ch; }
 
     /* =========================
        Heading & elemen visual
@@ -83,7 +85,7 @@
     h2{
       margin: 0 0 6px 0;
       font-weight: 700;
-      font-size: clamp(22px, 3.2vw, 30px);
+      font-size: clamp(24px, 3.2vw, 32px);
       letter-spacing: -0.015em;
     }
     .rule{
@@ -93,7 +95,7 @@
       margin: 10px 0 18px 0;
     }
     h3{
-      margin: 24px 0 8px 0;
+      margin: 28px 0 8px 0;
       font-size: clamp(18px, 2.2vw, 22px);
       font-weight: 700;
       letter-spacing: -0.01em;
@@ -134,12 +136,38 @@
     ul.clean li{ margin: 6px 0; }
 
     /* =========================
+       Grid dua kolom responsif
+       ========================= */
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 8px 0 0;
+    }
+    @media (min-width: 880px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+    .card{
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      background: var(--surface);
+      box-shadow: 0 1px 1px rgba(0,0,0,.02);
+    }
+    .card h4{
+      margin: 0 0 6px 0;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    /* =========================
        Komponen utilitas
        ========================= */
     .callout{
       margin: 10px 0 0;
       padding: 12px 14px;
-      background: rgba(10,132,255,.08);
+      background: var(--tint);
       border: 1px solid var(--border);
       border-radius: 12px;
     }
@@ -152,15 +180,15 @@
     }
     .meta dt{ color: var(--muted); }
     .meta dd{ margin: 0; }
-    .divider{ height: 1px; background: var(--border); margin: 18px 0; }
+    .divider{ height: 1px; background: var(--border); margin: 20px 0; }
     ::selection{ background: rgba(10,132,255,.20); }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <section class="sheet prose" aria-labelledby="garansi-heading">
+    <section class="sheet prose" aria-labelledby="heading">
       <p class="eyebrow">Informasi Layanan</p>
-      <h2 id="garansi-heading">Ketentuan & Bantuan Garansi</h2>
+      <h2 id="heading">Ketentuan & Bantuan Garansi</h2>
       <div class="rule" aria-hidden="true"></div>
 
       <!-- MASA LANGGANAN -->
@@ -179,7 +207,7 @@
         <li><div>Pelanggaran ketentuan: <strong>garansi hangus</strong> dan <strong>denda</strong> sesuai aturan.</div></li>
       </ol>
 
-      <!-- BANTUAN: SALAH PIN PROFIL NETFLIX -->
+      <!-- BANTUAN: SALAH PIN PROFIL -->
       <h3>Netflix — Mengatasi PIN Profil Salah</h3>
       <ol class="numbered">
         <li><div>Pilih <strong>Lupa PIN / Forgot PIN</strong> di layar PIN profil.</div></li>
@@ -191,11 +219,50 @@
         <p class="muted"><strong>Jika “Lupa PIN” tidak muncul:</strong> pastikan aplikasi Netflix versi terbaru, coba via browser di netflix.com, atau hubungi admin untuk bantuan reset PIN.</p>
       </div>
 
+      <!-- HOUSEHOLD CODE: TV & HP -->
+      <h3>Netflix — Tata Cara Kirim Kode Household</h3>
+      <div class="grid">
+        <!-- TV -->
+        <div class="card">
+          <h4>Lewat TV</h4>
+          <ol class="numbered">
+            <li><div>Pastikan profil yang terkena household berbahasa Indonesia atau English.</div></li>
+            <li><div>Pastikan tertulis: “TV mu bukan bagian dari rumah dengan akun Netflix untuk akun ini”.</div></li>
+            <li><div>Pilih <strong>Saya Sedang Bepergian</strong>.</div></li>
+            <li><div>Pilih <strong>Kirim Email</strong>.</div></li>
+            <li><div>Ambil foto layar (tangkapan layar) dan kirim ke owner.</div></li>
+            <li><div>Owner mengirim kode, selesai.</div></li>
+          </ol>
+        </div>
+
+        <!-- HP -->
+        <div class="card">
+          <h4>Lewat HP</h4>
+          <ol class="numbered">
+            <li><div>Pastikan profil yang terkena household berbahasa Indonesia atau English.</div></li>
+            <li><div>Pastikan tertulis: “TV mu bukan bagian dari rumah dengan akun Netflix untuk akun ini”.</div></li>
+            <li><div>Pilih <strong>Tonton Sementara</strong>.</div></li>
+            <li><div>Pilih <strong>Kirim Email</strong>.</div></li>
+            <li><div>Ambil foto layar dan kirim ke owner.</div></li>
+            <li><div>Owner mengirim kode, selesai.</div></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p class="callout-title" style="margin:0 0 6px 0; font-weight:600;">Troubleshooting kirim gambar/URL</p>
+        <ul class="clean">
+          <li>Jika muncul pesan “Gagal kirim gambar. Cek apakah URL-nya valid.” pastikan tautan dapat diakses publik dan tidak memerlukan login.</li>
+          <li>Gunakan layanan berbagi gambar dengan URL langsung (misalnya file statis GitHub Pages, Imgur, atau penyimpanan yang memberikan tautan file langsung).</li>
+          <li>Hindari URL yang berakhir pada halaman pratinjau; pastikan format file gambar (.jpg/.png/.webp) terbaca langsung.</li>
+        </ul>
+      </div>
+
       <!-- SNK/ATURAN -->
       <h3>SNK Netflix</h3>
       <ul class="clean">
-        <li><strong>Wajib</strong> clear data / reinstall app sebelum login (hindari error/incorrect session).</li>
-        <li><strong>Max login 1 perangkat.</strong> Jika ingin pindah device, <strong>wajib kabari admin</strong> dahulu.</li>
+        <li><strong>Wajib</strong> clear data / reinstall app sebelum login (menghindari error/incorrect session).</li>
+        <li><strong>Max login 1 perangkat.</strong> Jika ingin pindah device, <strong>wajib kabari admin</strong> terlebih dahulu.</li>
         <li><strong>Dilarang</strong> mengubah profil & PIN, billing/payment, email, dan password.</li>
         <li><strong>Wajib</strong> simpan <strong>SS bukti login</strong>; tanpa bukti, garansi tidak berlaku.</li>
       </ul>
@@ -204,12 +271,13 @@
       <h3>Penegakan & Denda</h3>
       <ul class="clean">
         <li>Login lebih dari 1 device → <span class="warn">Denda Rp200.000</span>.</li>
-        <li>Pelanggaran aturan (ganti kredensial/otak-atik akun) → <span class="warn">Denda Rp500.000 + Garansi hangus + Akun ditarik</span>.</li>
+        <li>Pelanggaran aturan (mengganti kredensial/otak-atik akun) → <span class="warn">Denda Rp500.000 + Garansi hangus + Akun ditarik</span>.</li>
         <li>Akun dipantau; pola login tidak sesuai form dapat berakibat akun ditarik dan garansi hangus.</li>
       </ul>
 
-      <!-- METADATA MASA BERLAKU -->
       <div class="divider" aria-hidden="true"></div>
+
+      <!-- METADATA MASA BERLAKU -->
       <h3>Masa Berlaku</h3>
       <dl class="meta">
         <dt>Durasi</dt><dd>1 bulan (25–30 hari)</dd>
