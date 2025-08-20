@@ -4,9 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>Ketentuan & Bantuan Garansi</title>
+  <title>Ketentuan & Bantuan Garansi (FAQ)</title>
 
-  <!-- Tipografi premium: SF Pro (device Apple) → Inter (webfont) → sistem -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -92,7 +91,7 @@
       height: 2px; width: 64px;
       background: linear-gradient(90deg, var(--accent), rgba(10,132,255,0));
       border-radius: 2px;
-      margin: 10px 0 18px 0;
+      margin: 10px 0 24px 0;
     }
     h3{
       margin: 28px 0 8px 0;
@@ -104,7 +103,52 @@
     .muted{ color: var(--muted); }
 
     /* =========================
-       Daftar bernomor premium
+       BARU: Komponen FAQ Dropdown
+       ========================= */
+    .faq-container{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    details{
+      border-bottom: 1px solid var(--border);
+      padding: 16px 4px;
+    }
+    details:first-of-type{
+      border-top: 1px solid var(--border);
+    }
+    summary{
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 17px;
+      list-style: none; /* Hapus panah default */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color .2s ease;
+    }
+    summary::-webkit-details-marker { display: none; } /* Safari */
+    summary:hover{ color: var(--accent); }
+
+    /* Ikon + dan - */
+    summary::after {
+      content: '+';
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--muted);
+      transition: transform .2s ease;
+    }
+    details[open] > summary::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    .faq-content{
+      padding-top: 16px;
+    }
+    
+    /* =========================
+       Daftar bernomor & bullet list
+       (Disimpan untuk konten di dalam FAQ)
        ========================= */
     ol.numbered{
       margin: 0; padding: 0;
@@ -128,15 +172,12 @@
       opacity: .9;
     }
     .numbered strong{ font-weight: 600; }
-
-    /* =========================
-       Bullet list bersih
-       ========================= */
     ul.clean{ margin: 0; padding-left: 1.1em; }
     ul.clean li{ margin: 6px 0; }
 
     /* =========================
-       Grid dua kolom responsif
+       Grid & Kartu
+       (Disimpan untuk konten di dalam FAQ)
        ========================= */
     .grid{
       display: grid;
@@ -180,111 +221,120 @@
     }
     .meta dt{ color: var(--muted); }
     .meta dd{ margin: 0; }
-    .divider{ height: 1px; background: var(--border); margin: 20px 0; }
     ::selection{ background: rgba(10,132,255,.20); }
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="sheet prose" aria-labelledby="heading">
-      <p class="eyebrow">Informasi Layanan</p>
-      <h2 id="heading">Ketentuan & Bantuan Garansi</h2>
+      <p class="eyebrow">Pusat Bantuan</p>
+      <h2 id="heading">Tanya Jawab & Ketentuan Garansi</h2>
       <div class="rule" aria-hidden="true"></div>
 
-      <!-- MASA LANGGANAN -->
-      <h3>Masa Langganan</h3>
-      <p><strong>1 bulan = 25–30 hari</strong> (tergantung paket). Periode ini tetap dihitung sebagai “1 bulan” untuk garansi dan masa berlaku.</p>
+      <div class="faq-container">
 
-      <!-- KETENTUAN GARANSI INTI -->
-      <h3>Ketentuan Garansi</h3>
-      <ol class="numbered">
-        <li><div>Dilarang mengubah informasi akun apa pun (email, password, dsb). <span class="muted">Pelanggaran: denda Rp150.000.</span></div></li>
-        <li><div>Login hanya melalui aplikasi/website resmi.</div></li>
-        <li><div>Akun hanya untuk <strong>1 perangkat</strong> pada saat yang sama.</div></li>
-        <li><div>Dilarang login di perangkat lain tanpa logout dari perangkat sebelumnya.</div></li>
-        <li><div>Jika pindah perangkat, <strong>logout dulu</strong> di perangkat lama.</div></li>
-        <li><div>Masa garansi mengikuti durasi paket yang ditentukan.</div></li>
-        <li><div>Pelanggaran ketentuan: <strong>garansi hangus</strong> dan <strong>denda</strong> sesuai aturan.</div></li>
-      </ol>
+        <details>
+          <summary>Apa saja syarat agar garansi berlaku?</summary>
+          <div class="faq-content">
+            <p><strong>Garansi</strong> adalah jaminan dari kami bahwa akun Anda akan berfungsi normal selama masa langganan. Jika terjadi masalah yang bukan disebabkan oleh pelanggaran, kami akan siap membantu.</p>
+            <p>Agar garansi Anda tetap berlaku, mohon ikuti beberapa aturan sederhana berikut demi kenyamanan kita bersama:</p>
+            <ol class="numbered">
+              <li><div><strong>Dilarang keras</strong> mengubah informasi akun (seperti email, password, atau paket langganan).</div></li>
+              <li><div>Harap login hanya melalui aplikasi atau website resmi penyedia layanan.</div></li>
+              <li><div>Akun hanya boleh digunakan pada <strong>satu perangkat</strong> dalam satu waktu.</div></li>
+              <li><div>Mohon jangan login di perangkat baru tanpa keluar (logout) terlebih dahulu dari perangkat sebelumnya.</div></li>
+              <li><div>Masa garansi berlaku sesuai durasi paket yang Anda pilih.</div></li>
+              <li><div>Pelanggaran terhadap ketentuan di atas dapat menyebabkan <strong>garansi hangus</strong> dan dikenakan denda.</div></li>
+            </ol>
+          </div>
+        </details>
 
-      <!-- BANTUAN: SALAH PIN PROFIL -->
-      <h3>Netflix — Mengatasi PIN Profil Salah</h3>
-      <ol class="numbered">
-        <li><div>Pilih <strong>Lupa PIN / Forgot PIN</strong> di layar PIN profil.</div></li>
-        <li><div>Masukkan <strong>password akun Netflix</strong>.</div></li>
-        <li><div>PIN profil yang benar akan ditampilkan.</div></li>
-        <li><div>Kembali, lalu masukkan PIN yang sudah dicek.</div></li>
-      </ol>
-      <div class="callout">
-        <p class="muted"><strong>Jika “Lupa PIN” tidak muncul:</strong> pastikan aplikasi Netflix versi terbaru, coba via browser di netflix.com, atau hubungi admin untuk bantuan reset PIN.</p>
+        <details>
+          <summary>Adakah aturan lain yang perlu saya perhatikan?</summary>
+          <div class="faq-content">
+            <p>Tentu, ada beberapa panduan tambahan untuk memastikan akun Anda berjalan lancar dan terhindar dari kendala teknis:</p>
+            <ul class="clean">
+              <li><strong>Wajib Hapus Data/Instal Ulang:</strong> Sebelum login pertama kali, mohon lakukan <em>clear data</em> (hapus data aplikasi) atau <em>reinstall</em> (pasang ulang) aplikasi. <span class="muted">Langkah ini penting untuk membersihkan sisa data akun lama yang dapat menyebabkan error.</span></li>
+              <li><strong>Pindah Perangkat:</strong> Jika Anda ingin berganti perangkat, mohon informasikan kepada admin terlebih dahulu.</li>
+              <li><strong>Jaga Informasi Profil:</strong> Dilarang mengubah nama profil, PIN, info tagihan, dan data sensitif lainnya.</li>
+              <li><strong>Simpan Bukti Login:</strong> Mohon simpan tangkapan layar (screenshot) saat Anda berhasil login pertama kali sebagai bukti. Tanpa bukti ini, klaim garansi tidak dapat kami proses.</li>
+            </ul>
+          </div>
+        </details>
+        
+        <details>
+          <summary>Bagaimana jika saya lupa PIN profil Netflix?</summary>
+          <div class="faq-content">
+            <p>Jangan khawatir, ini adalah masalah umum yang mudah diatasi. Silakan ikuti panduan di bawah ini:</p>
+            <ol class="numbered">
+              <li><div>Pada layar yang meminta PIN, pilih opsi <strong>“Lupa PIN?”</strong> atau <strong>“Forgot PIN?”</strong>.</div></li>
+              <li><div>Anda akan diminta memasukkan <strong>kata sandi (password) akun Netflix</strong>.</div></li>
+              <li><div>Setelah itu, PIN profil yang benar akan ditampilkan di layar.</div></li>
+              <li><div>Kembali ke halaman profil dan masukkan PIN yang sudah Anda lihat.</div></li>
+            </ol>
+            <div class="callout">
+              <p class="muted"><strong>Tidak menemukan opsi “Lupa PIN?”</strong><br>Pastikan aplikasi Netflix Anda adalah versi terbaru. Anda juga bisa mencobanya melalui browser di netflix.com. Jika masih terkendala, silakan hubungi kami untuk bantuan reset PIN.</p>
+            </div>
+          </div>
+        </details>
+        
+        <details>
+          <summary>Muncul permintaan Kode Rumah (Household), apa yang harus saya lakukan?</summary>
+          <div class="faq-content">
+            <p><strong>Kode Rumah (Household Code)</strong> adalah fitur Netflix untuk memastikan akun hanya digunakan oleh orang yang tinggal serumah. Jika Anda melihat permintaan ini (misalnya saat bepergian atau menggunakan jaringan internet baru), kami siap membantu Anda.</p>
+            <p>Silakan ikuti panduan di bawah ini sesuai perangkat yang Anda gunakan:</p>
+            <div class="grid">
+              <div class="card">
+                <h4>Panduan untuk TV</h4>
+                <ol class="numbered">
+                  <li><div>Pastikan pesan yang muncul bertuliskan: “TV Anda bukan bagian dari rumah Netflix untuk akun ini.”</div></li>
+                  <li><div>Pilih opsi <strong>“Saya Sedang Bepergian”</strong>.</div></li>
+                  <li><div>Pilih <strong>“Kirim Email”</strong>.</div></li>
+                  <li><div>Setelah itu, mohon <strong>ambil foto layar</strong> yang menampilkan pilihan tersebut dan kirimkan kepada kami.</div></li>
+                  <li><div>Kami akan segera mengirimkan kode untuk Anda masukkan. Selesai!</div></li>
+                </ol>
+              </div>
+              <div class="card">
+                <h4>Panduan untuk HP</h4>
+                <ol class="numbered">
+                  <li><div>Pastikan pesan yang muncul mirip dengan yang ada di TV.</div></li>
+                  <li><div>Pilih opsi <strong>“Tonton Sementara”</strong>.</div></li>
+                  <li><div>Pilih <strong>“Kirim Email”</strong>.</div></li>
+                  <li><div>Sama seperti di TV, mohon <strong>ambil foto layar</strong> dan kirimkan kepada kami.</div></li>
+                  <li><div>Kami akan memberikan kode akses sementara untuk Anda. Selesai!</div></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Apa konsekuensi jika saya melanggar aturan?</summary>
+          <div class="faq-content">
+            <p>Kami sangat menghargai kerja sama Anda dalam mematuhi aturan demi keamanan dan kenyamanan semua pengguna. Pelanggaran terhadap ketentuan yang telah ditetapkan dapat mengakibatkan konsekuensi berikut:</p>
+            <ul class="clean">
+              <li>Login di lebih dari 1 perangkat secara bersamaan → <span class="warn">Denda Rp200.000</span>.</li>
+              <li>Mengubah info akun (email/password) atau mengutak-atik tagihan → <span class="warn">Denda Rp500.000, garansi hangus, dan akun ditarik</span>.</li>
+            </ul>
+            <p class="muted">Sistem kami memantau aktivitas login. Pola penggunaan yang tidak wajar dapat mengakibatkan penarikan akun tanpa pemberitahuan dan penghapusan garansi.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Kapan langganan saya berakhir?</summary>
+          <div class="faq-content">
+            <p>Masa aktif langganan Anda adalah <strong>1 bulan</strong>, yang kami hitung sebagai periode <strong>25–30 hari</strong> tergantung jenis paket. Anda dapat melihat detail masa berlaku akun Anda di bawah ini.</p>
+            <dl class="meta">
+              <dt>Durasi</dt><dd>1 bulan (25–30 hari)</dd>
+              <dt>Berakhir Pada</dt><dd>30 Agustus 2025</dd>
+              <dt>Waktu Aktivasi</dt><dd>Sesuai jam saat akun diberikan</dd>
+            </dl>
+          </div>
+        </details>
+
       </div>
-
-      <!-- HOUSEHOLD CODE: TV & HP -->
-      <h3>Netflix — Tata Cara Kirim Kode Household</h3>
-      <div class="grid">
-        <!-- TV -->
-        <div class="card">
-          <h4>Lewat TV</h4>
-          <ol class="numbered">
-            <li><div>Pastikan profil yang terkena household berbahasa Indonesia atau English.</div></li>
-            <li><div>Pastikan tertulis: “TV mu bukan bagian dari rumah dengan akun Netflix untuk akun ini”.</div></li>
-            <li><div>Pilih <strong>Saya Sedang Bepergian</strong>.</div></li>
-            <li><div>Pilih <strong>Kirim Email</strong>.</div></li>
-            <li><div>Ambil foto layar (tangkapan layar) dan kirim ke owner.</div></li>
-            <li><div>Owner mengirim kode, selesai.</div></li>
-          </ol>
-        </div>
-
-        <!-- HP -->
-        <div class="card">
-          <h4>Lewat HP</h4>
-          <ol class="numbered">
-            <li><div>Pastikan profil yang terkena household berbahasa Indonesia atau English.</div></li>
-            <li><div>Pastikan tertulis: “TV mu bukan bagian dari rumah dengan akun Netflix untuk akun ini”.</div></li>
-            <li><div>Pilih <strong>Tonton Sementara</strong>.</div></li>
-            <li><div>Pilih <strong>Kirim Email</strong>.</div></li>
-            <li><div>Ambil foto layar dan kirim ke owner.</div></li>
-            <li><div>Owner mengirim kode, selesai.</div></li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="callout">
-        <p class="callout-title" style="margin:0 0 6px 0; font-weight:600;">Troubleshooting kirim gambar/URL</p>
-        <ul class="clean">
-          <li>Jika muncul pesan “Gagal kirim gambar. Cek apakah URL-nya valid.” pastikan tautan dapat diakses publik dan tidak memerlukan login.</li>
-          <li>Gunakan layanan berbagi gambar dengan URL langsung (misalnya file statis GitHub Pages, Imgur, atau penyimpanan yang memberikan tautan file langsung).</li>
-          <li>Hindari URL yang berakhir pada halaman pratinjau; pastikan format file gambar (.jpg/.png/.webp) terbaca langsung.</li>
-        </ul>
-      </div>
-
-      <!-- SNK/ATURAN -->
-      <h3>SNK Netflix</h3>
-      <ul class="clean">
-        <li><strong>Wajib</strong> clear data / reinstall app sebelum login (menghindari error/incorrect session).</li>
-        <li><strong>Max login 1 perangkat.</strong> Jika ingin pindah device, <strong>wajib kabari admin</strong> terlebih dahulu.</li>
-        <li><strong>Dilarang</strong> mengubah profil & PIN, billing/payment, email, dan password.</li>
-        <li><strong>Wajib</strong> simpan <strong>SS bukti login</strong>; tanpa bukti, garansi tidak berlaku.</li>
-      </ul>
-
-      <!-- PENEGAKAN/DENDA -->
-      <h3>Penegakan & Denda</h3>
-      <ul class="clean">
-        <li>Login lebih dari 1 device → <span class="warn">Denda Rp200.000</span>.</li>
-        <li>Pelanggaran aturan (mengganti kredensial/otak-atik akun) → <span class="warn">Denda Rp500.000 + Garansi hangus + Akun ditarik</span>.</li>
-        <li>Akun dipantau; pola login tidak sesuai form dapat berakibat akun ditarik dan garansi hangus.</li>
-      </ul>
-
-      <div class="divider" aria-hidden="true"></div>
-
-      <!-- METADATA MASA BERLAKU -->
-      <h3>Masa Berlaku</h3>
-      <dl class="meta">
-        <dt>Durasi</dt><dd>1 bulan (25–30 hari)</dd>
-        <dt>Berakhir</dt><dd>30 Agustus 2025</dd>
-        <dt>Jam aktif</dt><dd>Sesuai waktu saat akun diberikan</dd>
-      </dl>
     </section>
   </main>
 </body>
 </html>
+
