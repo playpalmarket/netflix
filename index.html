@@ -20,11 +20,11 @@
       --text: #1d1d1f;         /* teks utama */
       --muted: #6e6e73;        /* teks sekunder */
       --border: rgba(0,0,0,.08);
-      --accent: #0a84ff;       /* aksen halus elegan */
+      --accent: #5C80BC;       /* WARNA BARU: Sesuai permintaan */
       --warn: #b00020;         /* penekanan denda/peringatan */
       --radius: 16px;
       --shadow: 0 1px 1px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.08);
-      --tint: rgba(10,132,255,.08); /* latar tipis untuk callout */
+      --tint: rgba(92,128,188,.08); /* WARNA BARU: Disesuaikan dengan --accent */
     }
     @media (prefers-color-scheme: dark){
       :root{
@@ -35,7 +35,7 @@
         --border: rgba(255,255,255,.10);
         --warn: #ff6b6b;
         --shadow: 0 1px 1px rgba(0,0,0,.40), 0 8px 24px rgba(0,0,0,.60);
-        --tint: rgba(10,132,255,.18);
+        --tint: rgba(92,128,188,.18); /* WARNA BARU: Disesuaikan dengan --accent */
       }
     }
 
@@ -89,7 +89,8 @@
     }
     .rule{
       height: 2px; width: 64px;
-      background: linear-gradient(90deg, var(--accent), rgba(10,132,255,0));
+      /* WARNA BARU: Gradient disesuaikan dengan --accent */
+      background: linear-gradient(90deg, var(--accent), rgba(92,128,188,0));
       border-radius: 2px;
       margin: 10px 0 24px 0;
     }
@@ -221,7 +222,8 @@
     }
     .meta dt{ color: var(--muted); }
     .meta dd{ margin: 0; }
-    ::selection{ background: rgba(10,132,255,.20); }
+    /* WARNA BARU: Warna seleksi teks disesuaikan */
+    ::selection{ background: rgba(92,128,188,.20); }
   </style>
 </head>
 <body>
@@ -337,4 +339,3 @@
   </main>
 </body>
 </html>
-
