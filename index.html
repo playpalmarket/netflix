@@ -115,7 +115,7 @@
     }
     details{
       border-bottom: 1px solid var(--border);
-      padding-block: 6px; /* biar rapih saat animasi */
+      padding-block: 6px; /* rapi saat animasi */
     }
     details:first-of-type{
       border-top: 1px solid var(--border);
@@ -144,7 +144,7 @@
       outline-offset: var(--ring);
     }
 
-    /* Ikon +/− yang aksesibel (visual saja) */
+    /* Ikon +/− (visual) */
     summary .icon{
       width: 20px; height: 20px;
       display: inline-grid; place-items: center;
@@ -152,25 +152,22 @@
       font-size: 22px;
       line-height: 1;
       transition: transform .2s ease;
-      aria-hidden: true;
     }
     details[open] summary .icon{
       transform: rotate(180deg);
     }
-    /* Ganti simbol saat open/close (pakai data-attr untuk screen reader tetap tenang) */
     summary .icon::before{ content: '+'; }
     details[open] summary .icon::before{ content: '−'; }
 
-    /* Konten dengan animasi yang ramah akses */
+    /* Konten dengan animasi aman */
     .faq-content{
-      /* trik akordeon tanpa JS: max-height animatif + overflow */
-      overflow: clip;
+      overflow: hidden;               /* <- kompatibel luas */
       max-height: 0;
       padding: 0 4px;
-      transition: max-height .28s ease;
+      transition: max-height .28s ease, padding-top .28s ease;
     }
     details[open] .faq-content{
-      max-height: 1200px; /* cukup besar untuk konten terpanjang */
+      max-height: 1200px;             /* cukup besar */
       padding-top: 10px;
     }
     @media (prefers-reduced-motion: reduce){
@@ -222,7 +219,7 @@
       background: var(--surface);
       box-shadow: 0 1px 1px rgba(0,0,0,.02);
     }
-    .card h3{
+    .card h3, .card h2{
       margin: 0 0 6px 0;
       font-size: 16px;
       font-weight: 700;
@@ -395,18 +392,27 @@
     (function(){
       const items = Array.from(document.querySelectorAll('details'));
       let prevState = [];
+
       function openAll(){ prevState = items.map(d => d.open); items.forEach(d => d.open = true); }
       function restore(){ items.forEach((d,i) => d.open = !!prevState[i]); }
-      if ('onbeforeprint' in window){
+
+      // Browser yang mendukung before/afterprint
+      if ('onbeforeprint' in window) {
         window.addEventListener('beforeprint', openAll);
         window.addEventListener('afterprint', restore);
+      } else {
+        // Fallback: media query listener (Safari/iOS)
+        const mql = window.matchMedia('print');
+        mql.addEventListener?.('change', (e) => { e.matches ? openAll() : restore(); });
       }
     })();
 
-    // 2) Opsional: akordeon "single open" (hapus jika ingin multi-open)
+    // 2) Akordeon "single open" yang stabil
     (function(){
       const root = document.querySelector('[data-accordion="single"]');
       if(!root) return;
+
+      // Gunakan event 'toggle' di capturing phase supaya konsisten
       root.addEventListener('toggle', (e) => {
         const current = e.target;
         if(current.tagName !== 'DETAILS' || !current.open) return;
